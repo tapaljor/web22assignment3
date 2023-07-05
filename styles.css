@@ -75,11 +75,13 @@ iframe {
     height: 100%;
     border: none;
 }
-
 #logo {
+    width: 50%;
+    margin: 0 auto;
+}
+#logo img {
     width: 100%;
 }
-
 .product {
     display: grid;
     grid-template-rows: repeat(7, auto);
