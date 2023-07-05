@@ -90,15 +90,12 @@ iframe {
     justify-items: center;
     color: green;
 }
-
 .product img {
     width: 50%;
 }
-
 .product h5 {
     font-size: 1.2rem;
 }
-
 #orders {
     display: grid;
     grid-template-rows: repeat(4, auto);
