@@ -35,6 +35,8 @@ article {
     grid-template-columns: repeat(5, 1fr);
 }
 article img {
+    display: block;
+    margin: auto;
     width: 5rem;
     height: 5rem;
     object-fit: cover;
@@ -42,12 +44,12 @@ article img {
 .folder {
     background-image: url("images/folder.png");
     background-repeat: no-repeat;
-    background-size: 40%;
+    background-size: 3rem;
     background-position: center;
 }
 .ball {
     background-image: url("images/24.jpg");
     background-repeat: no-repeat;
-    background-size: 40%;
+    background-size: 3rem;
     background-position: center;
 }
