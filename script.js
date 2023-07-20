@@ -17,7 +17,6 @@ const players = [
 var randomAr = new Array(25).fill(0);
 var count = 0;
 var threeCells = [];
-var openedCells = [];
 var clickStatus = true;
 
 
@@ -40,7 +39,8 @@ for (var grid = 0; grid < totalPics; grid++) {
 }
 function showPlayer(e) {
 
-  if ( clickStatus == false) return; //if click is disabled then do not run this function at all
+  //if click is disabled then do not run this function at all
+  if ( clickStatus == false) return; 
 
   var targetCell = e.target;
 
@@ -64,8 +64,7 @@ function matchNames() {
   //names of three players compared
   if ( players[threeCells[0].id] === players[threeCells[1].id] && players[threeCells[1].id] === players[threeCells[2].id]) {
     for(const cell of threeCells) {
-      openedCells.push(cell);
-      cell.removeEventListener("click", showPlayer); //removing add event clickable for already opened players
+      cell.removeEventListener("click", showPlayer); //removing add event clickable for successfully opened players
     }
     clickStatus = true;
   } else {
