@@ -25,7 +25,7 @@ for (var grid = 0; grid < totalPics; grid++) {
   assignRandomNoToGrid(grid);
 
   const dummy = document.createElement("span");
-  if (randomAr[grid] === 24) {//last image is 24 which is not player, but a ball
+  if (randomAr[grid] === 24) {//24 which is not player, but a ball
     dummy.classList.add("ball");
   } else {
     dummy.classList.add("folder");
@@ -33,14 +33,16 @@ for (var grid = 0; grid < totalPics; grid++) {
   dummy.id = randomAr[grid];
   mainPage.appendChild(dummy);
 
-  if ( randomAr[grid] != 24) {//except ball, rest will have clickable event
+  if ( randomAr[grid] == 24) {//ball have event click which will reset the game
+    dummy.addEventListener("click", resetGame);
+  } else { //rest of cell have clickable to reveal player in the cell
     dummy.addEventListener("click", showPlayer);
   }
 }
 function showPlayer(e) {
 
   //if click is disabled then do not run this function at all
-  if ( clickStatus == false) return; 
+  if ( clickStatus == false) return;
 
   var targetCell = e.target;
 
@@ -94,4 +96,7 @@ function assignRandomNoToGrid(grid) {
   } else {
     assignRandomNoToGrid(grid);
   }
+}
+function resetGame() {
+  location.reload();
 }
