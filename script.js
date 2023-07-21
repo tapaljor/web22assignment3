@@ -13,22 +13,20 @@ const players = [
   "suarez", "suarez", "suarez"
 ];
 
-//randomAr to shuffle the picture
 var randomAr = new Array(25).fill(0);
 var count = 0;
 var threeCells = [];
 var clickStatus = true;
 
-
 for (var grid = 0; grid < totalPics; grid++) {
 
-  assignRandomNoToGrid(grid);
+  assignRandomNoToGrid(grid); //randomly arranges grid 0-24
 
-  const dummy = document.createElement("span");
+  const dummy = document.createElement("img");
   if (randomAr[grid] === 24) {//24 which is not player, but a ball
-    dummy.classList.add("ball");
+    dummy.src = "images/24.jpg";
   } else {
-    dummy.classList.add("folder");
+    dummy.src = "images/folder.png";
   }
   dummy.id = randomAr[grid];
   mainPage.appendChild(dummy);
@@ -41,15 +39,13 @@ for (var grid = 0; grid < totalPics; grid++) {
 }
 function showPlayer(e) {
 
-  //if click is disabled then do not run this function at all
+  //if click is disabled then do not continue the next 
   if ( clickStatus == false) return;
 
   var targetCell = e.target;
 
-  const childImg = document.createElement("img");
-  childImg.src = "images/" + targetCell.id + ".jpg";
-  childImg.alt = players[targetCell.id];
-  targetCell.appendChild(childImg);//temporary cell holder
+  targetCell.src = "images/" + targetCell.id + ".jpg";
+  targetCell.alt = players[targetCell.id];
 
   threeCells[count] = targetCell;
 
@@ -76,7 +72,7 @@ function matchNames() {
 function resetCells() {
 
   for(const cell of threeCells) {
-    cell.innerHTML = "";
+    cell.src = "images/folder.png";
   }
   clickStatus = true;
 }

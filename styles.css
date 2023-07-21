@@ -34,28 +34,10 @@ article {
     grid-template-rows: repeat(5, 1fr);
     grid-template-columns: repeat(5, 1fr);
 }
-span {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    align-items: center;
-}
 #mainPage img {
     width: 5rem;
     height: 5rem;
     object-fit: cover;
     border-radius: 50%;
     border: 2px solid #000;
-}
-.folder {
-    background-image: url("images/folder.png");
-    background-repeat: no-repeat;
-    background-size: 3rem;
-    background-position: center;
-}
-.ball {
-    background-image: url("images/24.jpg");
-    background-repeat: no-repeat;
-    background-size: 3rem;
-    background-position: center;
 }
