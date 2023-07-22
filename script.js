@@ -24,9 +24,9 @@ for (var grid = 0; grid < totalPics; grid++) {
 
   const dummy = document.createElement("img");
   if (randomAr[grid] === 24) {//24 which is not player, but a ball
-    dummy.src = "images/24.jpg";
+    dummy.src = "images/24.png";
   } else {
-    dummy.src = "images/folder.png";
+    dummy.src = "images/ball.jpg";
   }
   dummy.id = randomAr[grid];
   mainPage.appendChild(dummy);
@@ -46,6 +46,7 @@ function showPlayer(e) {
 
   targetCell.src = "images/" + targetCell.id + ".jpg";
   targetCell.alt = players[targetCell.id];
+  targetCell.style.cssText = "width: 5rem; height: 5rem; border-radius: 50%; ";
 
   threeCells[count] = targetCell;
 
@@ -72,7 +73,7 @@ function matchNames() {
 function resetCells() {
 
   for(const cell of threeCells) {
-    cell.src = "images/folder.png";
+    cell.src = "images/ball.jpg";
   }
   clickStatus = true;
 }

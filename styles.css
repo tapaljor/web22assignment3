@@ -23,11 +23,11 @@ h1 {
 .hidden {
     display: none;
 }
-article {
+#mainPage {
     width: 45%;
     margin: 0 auto;
     height: 65vh;
-    padding: 2rem 1rem;
+    padding: 2rem;
     border: 2px solid #000;
     border-radius: 15px;
     display: grid;
@@ -38,6 +38,5 @@ article {
     width: 5rem;
     height: 5rem;
     object-fit: cover;
-    border-radius: 50%;
-    border: 2px solid #000;
+    place-self: center;
 }
