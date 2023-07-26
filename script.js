@@ -57,6 +57,8 @@ function showPlayer(e) {
 
   threeCells[count] = targetCell;
 
+  targetCell.removeEventListener("click", showPlayer); //Opened player not clickable event
+
   if (count === 2) { //when three cell is clicked
     clickStatus = false;
     matchNames();
@@ -69,9 +71,6 @@ function matchNames() {
 
   //Names of three players compared
   if ( players[threeCells[0].id] === players[threeCells[1].id] && players[threeCells[1].id] === players[threeCells[2].id]) {
-    for(const cell of threeCells) {
-      cell.removeEventListener("click", showPlayer); //Removing add event clickable for successfully opened players
-    }
     clickStatus = true;
     accomplishment++;
   } else {
@@ -82,6 +81,9 @@ function resetCells() {
 
   for(const cell of threeCells) {
     cell.src = "images/ball.jpg";
+  }
+  for(const cell of threeCells) {
+    cell.addEventListener("click", showPlayer); //Enable event click if all three didn't match
   }
   clickStatus = true;
 }
