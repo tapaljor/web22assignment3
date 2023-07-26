@@ -1,7 +1,8 @@
 const totalPics = 25;
 const mainPage = document.getElementById("mainPage");
-//Pics are name 0-24
-//and players name are assigned accordingly in an aray
+//Players pictures are name 0-24
+//Players name are assigned accordingly in an aray
+//Example Davis is 0, 1, and 2 and Messi is 9, 10, and 11
 const players = [
   "davis", "davis", "davis",
   "kaka", "kaka", "kaka",
@@ -13,10 +14,16 @@ const players = [
   "suarez", "suarez", "suarez"
 ];
 
-var randomAr = new Array(25).fill(0);
+var randomAr = new Array(25).fill(0); //Fill array elements 0 
 var count = 0;
-var threeCells = [];
+var threeCells = []; //Storing three selections
 var clickStatus = true;
+var minutes = 0;
+var seconds = 0;
+var accomplishment = 0;
+
+updateTimer(); //Display time for make it challenging
+setInterval(updateTimer, 1000);
 
 for (var grid = 0; grid < totalPics; grid++) {
 
@@ -31,7 +38,7 @@ for (var grid = 0; grid < totalPics; grid++) {
   dummy.id = randomAr[grid];
   mainPage.appendChild(dummy);
 
-  if ( randomAr[grid] == 24) {//ball have event click which will reset the game
+  if ( randomAr[grid] == 24) {//reset button clickable which will reset the game
     dummy.addEventListener("click", resetGame);
   } else { //rest of cell have clickable to reveal player in the cell
     dummy.addEventListener("click", showPlayer);
@@ -60,12 +67,13 @@ function showPlayer(e) {
 }
 function matchNames() {
 
-  //names of three players compared
+  //Names of three players compared
   if ( players[threeCells[0].id] === players[threeCells[1].id] && players[threeCells[1].id] === players[threeCells[2].id]) {
     for(const cell of threeCells) {
-      cell.removeEventListener("click", showPlayer); //removing add event clickable for successfully opened players
+      cell.removeEventListener("click", showPlayer); //Removing add event clickable for successfully opened players
     }
     clickStatus = true;
+    accomplishment++;
   } else {
     setTimeout(resetCells, 2000);
   }
@@ -82,7 +90,7 @@ function assignRandomNoToGrid(grid) {
   var randomNo = Math.floor(Math.random() * 25);
   let counter = 0;
 
-  //checking if the array already occupied by random no.
+  //Checking if the array already occupied by random no in assigned grid cells
   for (let a = 0; a < grid; a++) {
     if (randomAr[a] === randomNo) {
       counter++;
@@ -96,4 +104,17 @@ function assignRandomNoToGrid(grid) {
 }
 function resetGame() {
   location.reload();
+}
+function updateTimer () {
+
+  if ( seconds > 59) {
+    minutes++;
+    seconds = 0;
+  }
+  timer.textContent = `${minutes}:${seconds++}`;
+
+  if ( accomplishment == 8) {
+    alert("Congratulations for finishing the game!. Your time is "+minutes+" minutes and "+seconds+" seconds");
+    resetGame();
+  }
 }
